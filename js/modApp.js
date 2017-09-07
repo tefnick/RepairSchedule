@@ -177,35 +177,37 @@ else{
 
 
 /*schedule dispatcher */
+/*TODO work on displaying count var in an individual cell
+ *TODO clean up code, it is messy as I'm experimenting with different things *experiments are commented out for the time being
+ */
 function checkinMod(){		
+   for(var i = 1; i <= cols.length; i++){
+      for(var j = 1; j <= rows.length; j++){
+         if(count <= 2){
+	    document.getElementsByTagName("tr")[i].getElementsByTagName("td")[j].innerHTML = count;
+	 }else{
+             console.log("too full");
+	 }//end if
+      }//end inner for		
+   }//end for
+   count++;
 
-	for(var i = 1; i <= cols.length; i++){
-		for(var j = 1; j <= rows.length; j++){
-			if(count <= 2){
-				 document.getElementsByTagName("tr")[i].getElementsByTagName("td")[j].innerHTML = count;
-			  }else{
-          console.log("too full");
-			}//end if
-		}//end inner for		
-	}//end for
-	count++;
+// if( count <= 3){
+// 	table.rows.item[1].cells.item[1].innerHTML = count;
+// }
 
-	// if( count <= 3){
-	// 	table.rows.item[1].cells.item[1].innerHTML = count;
-	// }
-
-	// $('#table tr').each(function(){
+// $('#table tr').each(function(){
 		
-	// 		//do your stuff, you can use $(this) to get current cell
-	// 		$(this).append("<td>" +count+"</td>");
+// //do your stuff, you can use $(this) to get current cell
+// 		$(this).append("<td>" +count+"</td>");
 		
-	// })
+// })
 
-      // if(count <= 2){
-      //   document.getElementsByTagName("tr")[2].innerHTML = count; //can't combine tr and td.innerHTML
-      // }
+// if(count <= 2){
+//   document.getElementsByTagName("tr")[2].innerHTML = count; //can't combine tr and td.innerHTML
+// }
 
-	// count++;
+// count++;
 }
 
 
