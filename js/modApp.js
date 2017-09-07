@@ -50,35 +50,9 @@ var normSchedule =
       '</thead>'+
       '<tbody>'+
         '<tr>'+
-          '<td>Mod Tech 1</td>'+
-          '<td>3</td>'+
-          '<td>3</td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-        '</tr>'+
-        '<tr>'+
-          '<td>Mod Tech 2</td>'+
-          '<td>3</td>'+
-          '<td>2</td>'+
+          '<td>Number of Repairs</td>'+
+          '<td>N/A</td>'+
+          '<td>N/A</td>'+
           '<td></td>'+
           '<td></td>'+
           '<td></td>'+
@@ -126,7 +100,9 @@ var sundaySchedule =
       '</thead>'+
       '<tbody>'+
         '<tr>'+
-          '<td>Mod Tech 1</td>'+
+          '<td>Number of Repairs</td>'+
+          '<td>N/A</td>'+
+          '<td>N/A</td>'+
           '<td></td>'+
           '<td></td>'+
           '<td></td>'+
@@ -138,32 +114,16 @@ var sundaySchedule =
           '<td></td>'+
           '<td></td>'+
           '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-        '</tr>'+
-        '<tr>'+
-          '<td>Mod Tech 2</td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-          '<td></td>'+
-        '</tr>'+
+        '</tr>'+  
       '</tbody>'
     '</table>';
 
-var count = 1; //#of repairs per slot
+var count = 1; 
+var MAX = 5; //Max #of repairs per slot
 var table = document.getElementById("table");
-var rows = document.getElementById("table").getElementsByTagName("tr");
-var cols = document.getElementById("table").getElementsByTagName("td");
+// var rows = document.getElementById("table").getElementsByTagName("tr");
+// var cols = document.getElementById("table").getElementsByTagName("td");
+var cells = table.getElementsByTagName("td"); 
 
 /* If it's sunday, display shorter schedule */
 if(dayofWeek === "Sunday"){
@@ -180,34 +140,27 @@ else{
 /*TODO work on displaying count var in an individual cell
  *TODO clean up code, it is messy as I'm experimenting with different things *experiments are commented out for the time being
  */
-function checkinMod(){		
-   for(var i = 1; i <= cols.length; i++){
-      for(var j = 1; j <= rows.length; j++){
-         if(count <= 2){
-	    document.getElementsByTagName("tr")[i].getElementsByTagName("td")[j].innerHTML = count;
-	 }else{
-             console.log("too full");
-	 }//end if
-      }//end inner for		
-   }//end for
-   count++;
+function checkinMod(){
+  if(dayofWeek != "Sunday"){
 
-// if( count <= 3){
-// 	table.rows.item[1].cells.item[1].innerHTML = count;
-// }
+   for (var i = 27; i < 48; i++) { //mod1 = cell index 25-48; 
+     var cellStatus = cells[i].getAttribute("td"); 
 
-// $('#table tr').each(function(){
-		
-// //do your stuff, you can use $(this) to get current cell
-// 		$(this).append("<td>" +count+"</td>");
-		
-// })
-
-// if(count <= 2){
-//   document.getElementsByTagName("tr")[2].innerHTML = count; //can't combine tr and td.innerHTML
-// }
-
-// count++;
+      if(count <= MAX){
+        if (cellStatus === null || cellStatus <= MAX) { 
+           cells[i].setAttribute(cellStatus, count);
+           cells[i].innerHTML = count;
+           console.log("i = "+ i +" cellsStatus: = " + cellStatus + " count: "+ count);
+           count++;
+           break;
+        }//end inner if
+      }//end if
+      count = 1;
+      continue;
+   }//end for 
+   
+ }
 }
+
 
 
