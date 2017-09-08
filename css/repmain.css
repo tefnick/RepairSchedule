@@ -1,13 +1,13 @@
+/**{
+    font-size: .7rem;
+}*/
 table {
+    max-width: 100%;
     border-collapse: collapse;
 }
 
 table, th, td {
     border: 1px solid #c2c8f1;
-}
-
-table {
-    width: 100%;
 }
 
 th {
@@ -17,9 +17,10 @@ th {
 
 td {
     height: 40px;
-    width: 80px;
+    width: 25px;
     vertical-align: bottom;
     text-align: center;
+    font-size: .57rem;
 }
 
 th, td {
