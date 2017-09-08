@@ -119,11 +119,12 @@ var sundaySchedule =
     '</table>';
 
 var count = 1; 
-var MAX = 5; //Max #of repairs per slot
+var MAX = 4; //Max #of repairs per slot -1
 var table = document.getElementById("table");
-// var rows = document.getElementById("table").getElementsByTagName("tr");
-// var cols = document.getElementById("table").getElementsByTagName("td");
+
 var cells = table.getElementsByTagName("td"); 
+var currCell = 27;
+var flag = 1;
 
 /* If it's sunday, display shorter schedule */
 if(dayofWeek === "Sunday"){
@@ -135,31 +136,43 @@ else{
 	document.getElementById("table").innerHTML = normSchedule;
 }
 
-
 /*schedule dispatcher */
-/*TODO work on displaying count var in an individual cell
- *TODO clean up code, it is messy as I'm experimenting with different things *experiments are commented out for the time being
- */
 function checkinMod(){
-  if(dayofWeek != "Sunday"){
+  
+  if(currCell >= 48){
+    alert("Next day pickup");
+  }
+  else{
+    var cellStatus = cells[currCell].getAttribute("td"); 
+    if(dayofWeek != "Sunday"){    
+      if(count < MAX) {
+        if(flag === 0){
+          count++;
+          flag = 1;
+        }
+        cells[currCell].innerHTML = count;
+        console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
-   for (var i = 27; i < 48; i++) { //mod1 = cell index 25-48; 
-     var cellStatus = cells[i].getAttribute("td"); 
-
-      if(count <= MAX){
-        if (cellStatus === null || cellStatus <= MAX) { 
-           cells[i].setAttribute(cellStatus, count);
-           cells[i].innerHTML = count;
-           console.log("i = "+ i +" cellsStatus: = " + cellStatus + " count: "+ count);
-           count++;
-           break;
-        }//end inner if
-      }//end if
+        if(flag === 1){
+          count++;
+        }
+      } 
+    else {
       count = 1;
-      continue;
-   }//end for 
-   
- }
+      currCell++;
+      flag = 0;
+      
+      if(currCell < 48){
+        cells[currCell].innerHTML = count;
+        console.log("currCell "+ currCell + " Count: " + count);
+      }
+      
+    }
+  }
+
+
+  }
+  
 }
 
 
