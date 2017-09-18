@@ -119,7 +119,7 @@ var sundaySchedule =
     '</table>';
 
 var count = 1; 
-var MAX = prompt("What is the max number of repairs per slot?"); //Max #of repairs per slot -1
+var MAX = prompt("What is the max number of repairs per half hour slot?"); //Max #of repairs per slot -1
 console.log("User set max repairs to " + MAX);
 var table = document.getElementById("table");
 
@@ -145,6 +145,7 @@ else{
 	document.getElementById("main").innerHTML = "Today is " + dayofWeek + "</br> Store hours are from 10am-9pm </br></br>";
 	document.getElementById("table").innerHTML = normSchedule;
 }
+
 
 /*schedule dispatcher */
 function checkinMod(){
@@ -207,15 +208,15 @@ function checkinMod(){
             }
         }
       }
-  }
-
-
-  
- 
-   
-
-  
+  } 
 }
+
+function setMAX(){
+  MAX = prompt("What is the new max repairs per slot?");
+  console.log("User changed max repairs to " + MAX);
+}
+
+
 
 
 
