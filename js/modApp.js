@@ -214,7 +214,7 @@ function checkinMod(){
 function setMAX(){
   MAX = prompt("What is the new max repairs per slot?");
   console.log("User changed max repairs to " + MAX);
-}
+};
 
 
 
