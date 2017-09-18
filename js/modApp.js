@@ -119,12 +119,22 @@ var sundaySchedule =
     '</table>';
 
 var count = 1; 
-var MAX = 4; //Max #of repairs per slot -1
+var MAX = prompt("What is the max number of repairs per slot?"); //Max #of repairs per slot -1
+console.log("User set max repairs to " + MAX);
 var table = document.getElementById("table");
 
 var cells = table.getElementsByTagName("td"); 
-var currCell = 27;
+var currCell;
+var cutOff;
 var flag = 1;
+
+/* sets starting point */
+if(dayofWeek != "Sunday"){
+  currCell = 27;
+}
+else{
+  currCell = 17;
+}
 
 /* If it's sunday, display shorter schedule */
 if(dayofWeek === "Sunday"){
@@ -138,40 +148,72 @@ else{
 
 /*schedule dispatcher */
 function checkinMod(){
-  
-  if(currCell >= 48){
-    alert("Next day pickup");
-  }
-  else{
-    var cellStatus = cells[currCell].getAttribute("td"); 
-    if(dayofWeek != "Sunday"){    
-      if(count < MAX) {
-        if(flag === 0){
-          count++;
-          flag = 1;
-        }
-        cells[currCell].innerHTML = count;
-        console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
-        if(flag === 1){
-          count++;
+  if(dayofWeek != "Sunday"){
+    if(currCell >= 48){
+      alert("Next day pickup");
+    }else{
+        var cellStatus = cells[currCell].getAttribute("td"); 
+        if(dayofWeek != "Sunday"){    
+          if(count <= MAX) {
+            if(flag === 0){
+              count++;
+              flag = 1;
+            }
+            cells[currCell].innerHTML = count;
+            console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
+
+            if(flag === 1){
+              count++;
+            }
+          } else {
+              count = 1;
+              currCell++;
+              flag = 0;
+              
+              if(currCell < 48){
+                cells[currCell].innerHTML = count;
+                console.log("currCell "+ currCell + " Count: " + count);
+              }
+            }
         }
-      } 
-    else {
-      count = 1;
-      currCell++;
-      flag = 0;
-      
-      if(currCell < 48){
-        cells[currCell].innerHTML = count;
-        console.log("currCell "+ currCell + " Count: " + count);
       }
-      
-    }
+  }else{
+      if(currCell >= 28){
+        alert("Next day pickup");
+      }else{
+        //var cellStatus = cells[currCell].getAttribute("td"); 
+        if(dayofWeek === "Sunday"){    
+          if(count <= MAX) {
+            if(flag === 0){
+              count++;
+              flag = 1;
+            }
+            cells[currCell].innerHTML = count;
+            console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
+
+            if(flag === 1){
+              count++;
+            }
+          } else {
+              count = 1;
+              currCell++;
+              flag = 0;
+              
+              if(currCell < 28){
+                cells[currCell].innerHTML = count;
+                console.log("currCell "+ currCell + " Count: " + count);
+              }
+            }
+        }
+      }
   }
 
 
-  }
+  
+ 
+   
+
   
 }
 
