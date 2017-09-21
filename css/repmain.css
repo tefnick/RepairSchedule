@@ -9,6 +9,14 @@
     font-size: 16px;
 }
 
+ul{
+    list-style-position:inside;
+    border-style: solid;
+    background-color:   #DCDCDC;
+    max-width: 80%;
+    margin: 0 5rem;
+}
+
 @media screen and (min-width: 414px){
     table {
         max-width: 100%;
