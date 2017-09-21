@@ -119,10 +119,9 @@ var sundaySchedule =
     '</table>';
 
 var count = 1; 
-var MAX = prompt("What is the max number of repairs per half hour slot?"); //Max #of repairs per slot -1
-console.log("User set max repairs to " + MAX);
+var MAX = prompt("What is the max number of repairs per half hour slot?");
+console.log("User set max repairs to " + MAX); //log event to console for verification
 var table = document.getElementById("table");
-
 var cells = table.getElementsByTagName("td"); 
 var currCell;
 var cutOff;
@@ -147,7 +146,9 @@ else{
 }
 
 
-/*schedule dispatcher */
+/*schedule dispatcher 
+*TODO: Clean this mess up
+*/
 function checkinMod(){
 
   if(dayofWeek != "Sunday"){
