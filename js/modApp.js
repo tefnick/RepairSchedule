@@ -216,6 +216,15 @@ function setMAX(){
   console.log("User changed max repairs to " + MAX);
 };
 
+function nextCell(){
+   count = 1;
+   currCell++;
+   flag = 1;
+   //cells[currCell].innerHTML = count;
+   console.log("i = "+ currCell + " count: "+ count);
+
+}
+
 
 
 
