@@ -120,6 +120,7 @@ var sundaySchedule =
 
 var count = 1; 
 var MAX = prompt("What is the max number of repairs per half hour slot?");
+document.getElementById("currentMAX").innerHTML = MAX;
 console.log("User set max repairs to " + MAX); //log event to console for verification
 var table = document.getElementById("table");
 var cells = table.getElementsByTagName("td"); 
@@ -156,6 +157,7 @@ function checkinMod(){
       alert("Next day pickup");
     }else{
         var cellStatus = cells[currCell].getAttribute("td"); 
+       cells[currCell].style.backgroundColor = "yellow";
         if(dayofWeek != "Sunday"){    
           if(count <= MAX) {
             if(flag === 0){
@@ -163,6 +165,7 @@ function checkinMod(){
               flag = 1;
             }
             cells[currCell].innerHTML = count;
+           cells[currCell].style.backgroundColor = "yellow";
             console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
             if(flag === 1){
@@ -175,6 +178,7 @@ function checkinMod(){
               
               if(currCell < 48){
                 cells[currCell].innerHTML = count;
+              cells[currCell].style.backgroundColor = "yellow";
                 console.log("currCell "+ currCell + " Count: " + count);
               }
             }
@@ -192,6 +196,7 @@ function checkinMod(){
               flag = 1;
             }
             cells[currCell].innerHTML = count;
+            cells[currCell].style.backgroundColor = "yellow";
             console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
             if(flag === 1){
@@ -204,6 +209,7 @@ function checkinMod(){
               
               if(currCell < 28){
                 cells[currCell].innerHTML = count;
+                cells[currCell].style.backgroundColor = "yellow";
                 console.log("currCell "+ currCell + " Count: " + count);
               }
             }
@@ -214,6 +220,7 @@ function checkinMod(){
 
 function setMAX(){
   MAX = prompt("What is the new max repairs per slot?");
+  document.getElementById("currentMAX").innerHTML = MAX;
   console.log("User changed max repairs to " + MAX);
 };
 
@@ -221,6 +228,7 @@ function nextCell(){
    count = 1;
    currCell++;
    flag = 1;
+   cells[currCell].style.backgroundColor = "yellow";
    //cells[currCell].innerHTML = count;
    console.log("i = "+ currCell + " count: "+ count);
 
