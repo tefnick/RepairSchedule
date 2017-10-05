@@ -209,7 +209,7 @@ function checkinMod(){
               
               if(currCell < 28){
                 cells[currCell].innerHTML = count;
-                cells[currCell].style.backgroundColor = "yellow";
+                cells[currCell].style.backgroundColor = "";
                 console.log("currCell "+ currCell + " Count: " + count);
               }
             }
