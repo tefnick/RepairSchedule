@@ -157,7 +157,7 @@ function checkinMod(){
       alert("Next day pickup");
     }else{
         var cellStatus = cells[currCell].getAttribute("td"); 
-       cells[currCell].style.backgroundColor = "yellow";
+       cells[currCell].style.backgroundColor = "#ffff7f";
         if(dayofWeek != "Sunday"){    
           if(count <= MAX) {
             if(flag === 0){
@@ -165,7 +165,8 @@ function checkinMod(){
               flag = 1;
             }
             cells[currCell].innerHTML = count;
-           cells[currCell].style.backgroundColor = "yellow";
+           cells[currCell].style.backgroundColor = "#ffff7f";
+           cells[currCell - 1].style.backgroundColor = "white";
             console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
             if(flag === 1){
@@ -175,10 +176,12 @@ function checkinMod(){
               count = 1;
               currCell++;
               flag = 0;
+              cells[currCell].style.backgroundColor = "#ffff7f";
+              cells[currCell - 1].style.backgroundColor = "white";
               
               if(currCell < 48){
                 cells[currCell].innerHTML = count;
-              cells[currCell].style.backgroundColor = "yellow";
+              cells[currCell].style.backgroundColor = "#ffff7f";
                 console.log("currCell "+ currCell + " Count: " + count);
               }
             }
@@ -196,7 +199,8 @@ function checkinMod(){
               flag = 1;
             }
             cells[currCell].innerHTML = count;
-            cells[currCell].style.backgroundColor = "yellow";
+            cells[currCell].style.backgroundColor = "#ffff7f";
+            cells[currCell - 1].style.backgroundColor = "white";
             console.log("i = "+ currCell +" cellsStatus: = " + cellStatus + " count: "+ count);
 
             if(flag === 1){
@@ -209,7 +213,7 @@ function checkinMod(){
               
               if(currCell < 28){
                 cells[currCell].innerHTML = count;
-                cells[currCell].style.backgroundColor = "";
+                cells[currCell].style.backgroundColor = "#ffff7f";
                 console.log("currCell "+ currCell + " Count: " + count);
               }
             }
@@ -228,7 +232,8 @@ function nextCell(){
    count = 1;
    currCell++;
    flag = 1;
-   cells[currCell].style.backgroundColor = "yellow";
+   cells[currCell].style.backgroundColor = "#ffff7f";
+   cells[currCell - 1].style.backgroundColor = "white";
    //cells[currCell].innerHTML = count;
    console.log("i = "+ currCell + " count: "+ count);
 
