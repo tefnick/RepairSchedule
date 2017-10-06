@@ -191,7 +191,8 @@ function checkinMod(){
       if(currCell >= 28){
         alert("Next day pickup");
       }else{
-        //var cellStatus = cells[currCell].getAttribute("td"); 
+        //var cellStatus = cells[currCell].getAttribute("td");
+        cells[currCell].style.backgroundColor = "#ffff7f"; 
         if(dayofWeek === "Sunday"){    
           if(count <= MAX) {
             if(flag === 0){
@@ -210,6 +211,8 @@ function checkinMod(){
               count = 1;
               currCell++;
               flag = 0;
+              cells[currCell].style.backgroundColor = "#ffff7f";
+              cells[currCell - 1].style.backgroundColor = "white"; 
               
               if(currCell < 28){
                 cells[currCell].innerHTML = count;
